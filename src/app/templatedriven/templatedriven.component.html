@@ -1,0 +1,62 @@
+<div class="container card">
+    <h5 class="card-title">Informations générales</h5> 
+<form action="" #paimentForm="ngForm" (ngSubmit)="save(paimentForm)">
+    <div class="form-group">
+        <label for="nom">Nom</label>
+        <input class="form-control"  type="text" name="nom" id="nom" required ngModel   #nom="ngModel" >   
+       <span style="color: red;" *ngIf="nom.invalid && nom.touched && nom.errors?.['required']">Nom is required</span> 
+        
+    </div><br>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control"  type="email" name="email" id="email" required ngModel   #email="ngModel"  pattern="[a-z A-Z]+[.]+[a-z A-Z]+@+[a-z]{3}"   > 
+        <span style="color: red;" *ngIf="email.invalid && email.touched && email.errors?.['required']">Email is required</span>  
+        <span style="color: red;" *ngIf="email.errors?.['pattern']">Email Format invalid</span> 
+    </div><br>
+    <div class="card">
+       
+        <h5 class="card-title">Informations de payment</h5> 
+        
+        <div class="form-group">
+            <label for="typeCarte">Type de carte</label>
+            <input class="form-control"  type="text" name="typeCarte" id="typeCarte" required ngModel   #typeCarte="ngModel" >   
+           <span style="color: red;" *ngIf="typeCarte.invalid && typeCarte.touched && typeCarte.errors?.['required']">typeCarte is required</span> 
+            
+        </div><br>
+        <div class="form-group">
+            <label for="NumCarte">Numéro carte</label>
+            <input class="form-control"  type="text" name="NumCarte" id="NumCarte" required ngModel   #NumCarte="ngModel" >   
+           <span style="color: red;" *ngIf="NumCarte.invalid && NumCarte.touched && NumCarte.errors?.['required']">Numéro carte is required</span> 
+            
+        </div><br>
+        <div class="form-group">
+        <label for="DateExp">Date Expiration</label>
+        <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+            <input placeholder="Select date" type="text" id="DateExp" class="form-control"  required ngModel   #DateExp="ngModel">
+            <span  style="color: red;" *ngIf="DateExp.invalid && DateExp.touched && DateExp.errors?.['required']">Date Expiration is required</span> 
+            <i class="fas fa-calendar input-prefix"></i>
+        </div>
+          </div><br>
+
+
+
+        <div class="form-group">
+            <label for="code">Code</label>
+            <!---->
+         
+            <input class="form-control"  [disabled]="!typeCarte.valid || !NumCarte.valid || !DateExp.valid" type="text"  minlength="16" name="code" id="code" required ngModel   #code="ngModel" >   
+           
+            <span style="color: red;" *ngIf="code.invalid && code.touched && code.errors?.['required']">Code is required</span> 
+           <span style="color: red;" *ngIf="code.invalid && code.touched && code.errors?.['minlength']">Minimum 16 chiffres</span>
+        </div><br>
+    
+    </div><br>
+    <div class="form-group ">
+        <div class="d-flex justify-content-center">
+        <input  [disabled]="!paimentForm.valid" class="form-control " type="submit" value="Ajouter" class="btn btn-primary">
+    </div>
+         </div>
+</form>
+
+</div>
