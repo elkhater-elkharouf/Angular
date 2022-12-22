@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,6 +11,12 @@ import { ErreurComponent } from './erreur/erreur.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { TemplatedrivenComponent } from './templatedriven/templatedriven.component';
+import { ProductService } from './Core/Services/product.service';
+import { ProductitemComponent } from './productitem/productitem.component';
+import { ToEuroConvertComponent } from './to-euro-convert/to-euro-convert.component';
+import { ConvertisseurComponent } from './convertisseur/convertisseur.component';
+import { ActorComponent } from './actor/actor.component';
+import { ActorsComponent } from './actors/actors.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +27,20 @@ import { TemplatedrivenComponent } from './templatedriven/templatedriven.compone
     ErreurComponent,
     EditProductComponent,
     AddProductComponent,
-    TemplatedrivenComponent
+    TemplatedrivenComponent,
+    ProductitemComponent,
+    ToEuroConvertComponent,
+    ConvertisseurComponent,
+    ActorComponent,
+    ActorsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

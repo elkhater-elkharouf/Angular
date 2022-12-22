@@ -1,2 +1,21 @@
-<p>edit-product works!</p>
+
 id:{{id}}
+<h2>Update product Form</h2>
+<form action="" #addForm ="ngForm" (ngSubmit)="update(addForm)">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title" name="title" id="title" ngModel required minlength="4" #title="ngModel">
+    <br>
+<span *ngIf="title.invalid && title.touched && title.errors?.['required']" style="color: red;"> Title is required </span>
+<br>
+<span *ngIf="title.invalid && title.touched && title.errors?.['minlength']" style="color: red;"> Title is shorter </span>
+<br>
+    <label for="price">Price</label>
+    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter price" name="price" id="price" [(ngModel)]="product.price">
+    <br>
+
+    <label for="qt">Quantity</label>
+    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter quantite" name="qt" id="qt"  [(ngModel)]="product.quantity">
+    <br>
+    <input type="submit" class="btn btn-success" value="Update">
+
+</form>

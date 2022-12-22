@@ -1,5 +1,5 @@
 Filtrer : <input type="search" [(ngModel)]="prix">
-<div *ngFor="let product of listProdcut , let i=index">
+<div *ngFor="let product of listProdcuts , let i=index">
     <div *ngIf="product.price <prix || prix==null" class="card" style="width: 18rem">
 <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="..." alt="Card image cap">
@@ -19,6 +19,8 @@ Filtrer : <input type="search" [(ngModel)]="prix">
       <h5> {{product.quantity}}</h5>
       <button   class="btn btn-danger" (click)="edit(product.id)"  >Edit</button>
       <a [routerLink]="['/editProduct', product.id]">Edit</a>
+      <button   class="btn btn-danger" (click)="delete(product.id)"  >Delete</button>
+
     </div>
   </div>
   <button class="btn btn-success" (click)="routage()">go to user</button>

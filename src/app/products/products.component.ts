@@ -1,32 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { VirtualTimeScheduler } from 'rxjs';
 import { Product } from '../Core/Models/product';
+import { ProductService } from '../Core/Services/product.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
+  // providers:[ProductService]
 })
 export class ProductsComponent implements OnInit {
 
-  listProdcut:Product[]=[
-    {id: 1, title: "T-shirt 1", price: 18, quantity: 0, like: 0},
-    {id: 2, title: "T-shirt 2", price: 21, quantity: 10, like: 0},
-    {id: 3, title: "T-shirt 3", price: 16, quantity: 8, like: 0}, ]
+  listProdcuts!:Product[]
+
     prix!:number ; 
     
 
-  constructor(private r:Router) { }
+  constructor(private r:Router , private productServ : ProductService) { }
 
   ngOnInit(): void {
+   this.productServ.getAllProducts().subscribe(
+    resp=>this.listProdcuts=resp , 
+    err=>alert('prob de back '), 
+    ()=>alert('recuperation effectuée')
+   ) ; 
 
   }
 like (indice:number){
-  this.listProdcut[indice].like++ ;
+  this.listProdcuts[indice].like++ ;
 
 }
 buy (indice:number){
-this.listProdcut[indice].quantity-- ; 
+this.listProdcuts[indice].quantity-- ; 
 
 }
 routage(){
@@ -37,5 +43,13 @@ edit(id:any){
   
   
 }
+addProduct(){
+  this.r.navigate(['addProduct'])
+}
+delete(id:number){
+  this.productServ.delete(id).subscribe(
+    ()=>window.location.reload()
+     );
+      }
 
 }
