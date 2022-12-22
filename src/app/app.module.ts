@@ -40,7 +40,7 @@ import { ActorsComponent } from './actors/actors.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ProductService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

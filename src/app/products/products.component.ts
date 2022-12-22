@@ -21,18 +21,30 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
    this.productServ.getAllProducts().subscribe(
-    resp=>this.listProdcuts=resp , 
-    err=>alert('prob de back '), 
-    ()=>alert('recuperation effectuée')
+    resp=>{this.listProdcuts=resp;} , 
+    err=>{alert('prob de back ')}, 
+    ()=>{alert('recuperation effectuée')}
    ) ; 
 
   }
 like (indice:number){
-  this.listProdcuts[indice].like++ ;
+  for(let i=0;i<this.listProdcuts.length;i++)
+  {
+    if(this.listProdcuts[i].id==indice)
+      {
+        this.listProdcuts[i].like++;
+      }
+  }
 
 }
 buy (indice:number){
-this.listProdcuts[indice].quantity-- ; 
+  for(let i=0;i<this.listProdcuts.length;i++)
+  {
+  if(this.listProdcuts[i].id==indice)
+  {
+    this.listProdcuts[i].quantity--;
+  }
+  }
 
 }
 routage(){

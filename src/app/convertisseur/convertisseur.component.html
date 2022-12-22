@@ -1,9 +1,9 @@
-<p>convertisseur-component works!</p>
+
 <div>
     <label for="montant">saisir un montant en dinar :</label>
 <input type="text" name="montant"  [(ngModel)]="montant">
 <app-to-euro-convert  [filsproperty]="montant" (conversion)="convertDinarEuro($event)"></app-to-euro-convert>
 </div>
+<br>
 
-
-Convertion en Euro  (From Parent Component): {{MontantConvert}}
+Convertisseur en Euro  (From Parent Component): {{MontantConvert}}

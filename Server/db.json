@@ -1,3 +1,23 @@
 {
-  "Product": []
+  "Product": [ {
+    "id": 6,
+    "title": "T-shirt 1",
+    "price": 18,
+    "quantity": 0,
+    "like": 0
+  },
+  {
+    "id": 7,
+    "title": "khrouf",
+    "price": 4002222,
+    "quantity": 13,
+    "like": 33
+  },
+  {
+    "id": 3,
+    "title": "khater",
+    "price": 18,
+    "quantity": 0,
+    "like": 0
+  }]
 }

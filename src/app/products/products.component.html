@@ -22,6 +22,13 @@ Filtrer : <input type="search" [(ngModel)]="prix">
       <button   class="btn btn-danger" (click)="delete(product.id)"  >Delete</button>
 
     </div>
+    <div>
+      <button class="btn btn-success" (click)="addProduct()"> Ajouter Produit</button>
+  </div>
+  <div *ngFor="let p of listProdcuts; let i = index">
+     <app-productitem  [productItem]="p" [prix]="p.price" ></app-productitem>
+  
+  <div>
   </div>
   <button class="btn btn-success" (click)="routage()">go to user</button>
 </div>

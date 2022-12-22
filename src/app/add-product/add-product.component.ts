@@ -27,11 +27,15 @@ product={id: 3, title: "T-shirt 3", price: 16, quantity: 8, like: 0}
   }
   
   save(f:NgForm){
-    this.product.id=this.listLength+1
+    console.log(f.value);
+    f.value['id'] = this.listLength +1 ;
+    this.productS.addProduct(this.product)
+console.log(this.listLength);
+
     this.productS.addProduct(this.product).subscribe(
-     ()=> this.R.navigate(['product']),
-      err=>alert('prob de back '), 
-      ()=>alert('ajout effectuée')
+      data => {alert("produit ajouter ");
+      this.R.navigate(['product'])},
+      err => {alert("produit non ajouter")}
      );
     // console.log(f);
     // console.log(f.controls['title'].value);
